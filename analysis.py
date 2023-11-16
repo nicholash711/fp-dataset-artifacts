@@ -9,12 +9,12 @@ def main():
     
     f.close()
     
-    f = open(analysis_dir + "wrong_predictions.jsonl", "w")
+    f = open(analysis_dir + "correct_predictions.jsonl", "w")
     
-    for entry in json_list:
+    for entry in json_list[:100]:
         js = json.loads(entry)
-        if js["label"] != js["predicted_label"]:
-            f.write(entry);
+        if js["label"] == js["predicted_label"]:
+            f.write(entry)
             
     f.close()
 
